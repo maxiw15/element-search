@@ -1,36 +1,24 @@
 'use strict';
-
-// Вывод активного окна
-// let modalMain = document.getElementById('modal_main')
-// let modalSuccess = document.getElementById('modal_success')
-// modalMain.classList.add('modal_active');
-//
-// // Закрытие активных окон
-// document.querySelector('div.modal a.btn_danger').onclick = function () {
-//   modalMain.classList.remove('modal_active');
-//   modalSuccess.classList.add('modal_active');
-// };
-//
-// let arr = Array.from(document.querySelectorAll('div.modal__close_times'))
-// function closePopup() {
-//   arr.forEach((modal) => {
-//     modal.onclick = function () {
-//       modal.closest('div.modal').classList.remove('modal_active');
-//     };
-//   });
-// };
-//
-// closePopup();
-
+let arr = []
 function click (){
+        const thisClosest = this.closest('.menu__item')
+        if (thisClosest.querySelector(".menu__item")){
+        event.preventDefault();
+        thisClosest.querySelector(".menu .menu_sub").classList.add("menu_active");
+        if (arr.length > 0) {
+            arr.pop().classList.remove("menu_active");
+        }
+        arr.push(thisClosest.querySelector(".menu .menu_sub"));
 
 }
-
-
-//Регистрируем обработчики событий
+}
+//Используя цикл зарегистрируйте обработчики события
+// click на элементах с классом menu__link
 
 let menuLink = Array.from(document.querySelectorAll(`.menu__link`))
 for (let i = 0; i < menuLink.length; i++) {
-    console.log(menuLink[i])
     menuLink[i].addEventListener("click", click)
 }
+
+//Найдите меню рядом со ссылкой.
+//Если оно есть, переключите у него класс menu_active
