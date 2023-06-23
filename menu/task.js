@@ -9,7 +9,6 @@ function click (){
             arr.pop().classList.remove("menu_active");
         }
         arr.push(thisClosest.querySelector(".menu .menu_sub"));
-
 }
 }
 //Используя цикл зарегистрируйте обработчики события
